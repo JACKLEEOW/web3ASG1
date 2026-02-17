@@ -16,12 +16,18 @@ const PORT = process.env.PORT || 3000;
 const supabase = supa.createClient(supaUrl, supaKey)
 
 
+app.get('/', (req,res) => {
+  res.send("Welcome to the API Randy!")
+});
+
 app.get('/all', async (req,res)=> {
     const {data, error} = await supabase
     .from('artists')
     .select();
     res.send(data)
 });
+
+
 
 app.get('/api/songs', getAllSongs(supabase));
 app.get('/api/genres', getAllGenres(supabase));
