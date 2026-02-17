@@ -59,4 +59,29 @@ const getArtistAverages = (supabase) => async (req, res) => {
     res.json(result);
 };
 
-module.exports = { getAllArtists, getArtistAverages };
+const getArtistById = (supabase) => async (req, res) => {
+    const ref = Number(req.params.ref);
+
+    if (isNaN(ref)) {
+        return res.status(400).json({ error: 'Artist ID must be a number.' });
+    }
+
+    const { data, error } = await supabase
+        .from('artists')
+        .select(`
+            artist_id,
+            artist_name,
+            artist_image_url,
+            spotify_url,
+            spotify_desc,
+            types ( type_name )
+        `)
+        .eq('artist_id', ref)
+        .single();
+
+    if (error) return res.status(404).json({ error: `Artist with ID ${ref} not found.` });
+
+    res.json(data);
+};
+
+module.exports = { getAllArtists, getArtistById, getArtistAverages };

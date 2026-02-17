@@ -11,6 +11,8 @@ const searchSongsByBegin = (supabase) => async (req, res) => {
 
     if (error) return res.status(500).json({ error: error.message });
 
+    if (!data.length) return res.status(404).json({ error: `No songs found with a title beginning with "${substring}".` });
+
     res.json(data);
 };
 
@@ -24,6 +26,8 @@ const searchSongsByAny = (supabase) => async (req, res) => {
         .order('title', { ascending: true });
 
     if (error) return res.status(500).json({ error: error.message });
+
+    if (!data.length) return res.status(404).json({ error: `No songs found with a title containing "${substring}".` });
 
     res.json(data);
 };
@@ -42,6 +46,8 @@ const searchSongsByYear = (supabase) => async (req, res) => {
         .order('title', { ascending: true });
 
     if (error) return res.status(500).json({ error: error.message });
+
+    if (!data.length) return res.status(404).json({ error: `No songs found for the year ${year}.` });
 
     res.json(data);
 };

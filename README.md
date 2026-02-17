@@ -46,6 +46,7 @@ A REST API built with Supabase that serves song, artist, genre, playlist, and mo
 | Endpoint | Description | Test Link |
 |----------|-------------|-----------|
 | `/api/artists` | Returns all artists sorted by name, including their type. | [Test](https://web-assignment-3-u2us.onrender.com/api/artists) |
+| `/api/artists/:ref` | Returns a single artist by their `artist_id`. | [Test](https://web-assignment-3-u2us.onrender.com/api/artists/129) |
 | `/api/artists/averages/:ref` | Returns the average audio stats (bpm, energy, danceability, etc.) for the specified artist ID. | [Test](https://web-assignment-3-u2us.onrender.com/api/artists/averages/2) |
 
 ### Genres
@@ -79,7 +80,7 @@ A REST API built with Supabase that serves song, artist, genre, playlist, and mo
 |-------|------|
 | `/api/artists` | [Test](https://web-assignment-3-u2us.onrender.com/api/artists) |
 | `/api/artists/129` | [Test](https://web-assignment-3-u2us.onrender.com/api/artists/129) |
-| `/api/artists/sdfjkhsdf` | [Test](https://web-assignment-3-u2us.onrender.com/api/artists/sdfjkhsdf) |
+| `/api/artists/sdfjkhsdf` *(invalid ID)* | [Test](https://web-assignment-3-u2us.onrender.com/api/artists/sdfjkhsdf) |
 | `/api/artists/averages/129` | [Test](https://web-assignment-3-u2us.onrender.com/api/artists/averages/129) |
 | `/api/genres` | [Test](https://web-assignment-3-u2us.onrender.com/api/genres) |
 | `/api/songs` | [Test](https://web-assignment-3-u2us.onrender.com/api/songs) |
